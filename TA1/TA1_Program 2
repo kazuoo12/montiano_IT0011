@@ -1,0 +1,3 @@
+digits_string = input("Enter a string with digits: ")
+sum_digits = sum(int(char) for char in digits_string if char.isdigit())
+print(f"Sum of digits: {sum_digits}")
