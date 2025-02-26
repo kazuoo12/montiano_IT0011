@@ -1,0 +1,12 @@
+A = {'a', 'b', 'c', 'd', 'f', 'g'}
+B = {'b', 'c', 'd', 'f', 'l', 'm', 'o'}
+C = {'c', 'd', 'f', 'h', 'i', 'j', 'k'}
+
+print("a.", len(A | B))
+print("b.", len(B - (A | C)))
+print("i.", C - (A | B))
+print("ii.", A & B & C)
+print("iii.", B & C)
+print("iv.", (A & B & C) - {'c'})
+print("v.", A & B & C)
+print("vi.", B - (A | C))

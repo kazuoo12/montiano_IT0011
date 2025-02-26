@@ -1,0 +1,33 @@
+def load_rates(filepath):
+    try:
+        with open(filepath, 'r', encoding='ISO-8859-1') as file:
+            next(file)
+            return {line.split(',')[0]: float(line.split(',')[2]) for line in file}
+    except FileNotFoundError:
+        print("Error: Currency file not found.")
+        return {}
+    except Exception as e:
+        print(f"Error reading file: {e}")
+        return {}
+
+def convert_currency(dollar, currency, rates):
+    return dollar * rates.get(currency, 0)
+
+def main():
+    rates = load_rates('currency.csv')
+    if not rates:
+        return
+    
+    try:
+        dollar = float(input("How much dollar do you have? "))
+        currency = input("What currency you want to have? ").upper()
+        
+        if currency in rates:
+            print(f"\nDollar: {dollar} USD\n{currency}: {convert_currency(dollar, currency, rates):.2f}")
+        else:
+            print("Currency not found.")
+    except ValueError:
+        print("Invalid input. Please enter a valid number for the dollar amount.")
+
+if __name__ == "__main__":
+    main()
